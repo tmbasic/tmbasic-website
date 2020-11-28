@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheat Sheet for Experienced Programmers - TMBASIC</title>
+
+<!-- favicon start -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!-- favicon end -->
+
+<meta name="apple-mobile-web-app-title" content="TMBASIC">
+<meta name="application-name" content="TMBASIC">
+<meta name="msapplication-TileColor" content="#da532c">
+<style>
+* { -webkit-text-size-adjust: none; text-size-adjust: none; }
+a, a > span.tt { color: #326ec8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+body { font-family: "Segoe UI", "Helvetica Neue", "Helvetica", Arial, sans-serif; font-size: 16px; color: #444444; margin: 1cm auto; margin-bottom: 5cm; padding-top: 1cm; max-width: 900px; line-height: 165%; overflow-y: scroll; }
+col { width: auto !important; }
+div.backlinks { font-size: 10pt; position: absolute; margin-top: -1cm; line-height: 100%; white-space: nowrap; }
+div.bar { font-size: 9pt; margin-top: 20px; }
+div.bar > span { background: #f8f8f8; padding: 5px 10px 5px 10px; font-weight: 500; }
+div.code div { text-indent: -2cm; padding-left: 2cm; }
+div.code { padding: 3mm; margin-bottom: 5mm; background: #f8f8f8; margin-top: 8px; white-space: pre; }
+div.indent { margin-left: 1cm; }
+div.paragraphBreak { height: 16px; }
+div#root { margin-left: 1cm; margin-right: 1cm; }
+div#compatibilityTable { line-height: 100%; }
+div#compatibilityTable > table > tbody > tr > td { vertical-align: middle; padding: 2mm; padding-right: 4mm; }
+h1 { font-size: 40px; color: #333333; }
+h1 > span.tt { letter-spacing: -2px; word-break: break-word; }
+h1#tmbasic { display: none; }
+h1, h2, h3, h4, h5 { font-weight: 400; letter-spacing: -0.38px; line-height: 100%; }
+h2 { font-size: 28px; color: #ba3925; margin-top: 50px; }
+h3 { color: #ba3925; font-size: 20px; }
+img.screenshot { margin-top: 2mm; height: 275px; width: 434px; float: right; margin-left: 1cm; margin-right: 1mm; background: #bbbbbb; image-rendering: -webkit-optimize-contrast; }
+nav { background: #353535; position: absolute; top: 0; left: 0; width: 100%; padding-top: 2mm; padding-bottom: 2mm; line-height: normal; font-size: 18px; }
+nav > div { max-width: 900px; margin: 0 auto; }
+nav > div > div { margin-left: 1cm; margin-right: 1cm; }
+nav > div > div > a { margin-left: 5mm; color: #afafaf; }
+nav > div > div > a:hover { color: #FFFFFF; border-radius: 0.5mm; text-decoration: none; }
+nav > div > div > a:first-child { margin-left: 0; padding-left: 0; color: #f7f7f7; }
+pre, code, div.code, span.tt { font-family: Consolas, monospace; letter-spacing: -0.5px; color: #19177c; }
+pre, div.code { line-height: 100%; overflow-x: auto; overflow-y: hidden; margin-top: 0; }
+pre.diagram { display: inline-block; color: #333333; line-height: 100%; overflow-x: auto; overflow-y: hidden; width: 100%; }
+pre.taste { background: #000080; color: white; padding: 5px 0px 5px 10px; line-height: 120%; }
+pre.taste i { font-style: normal; color: #FFFF00; }
+pre.taste b { font-weight: normal; color: #C0C0C0; }
+pre.taste strong { font-weight: normal; color: #FF8AE2; }
+pre.taste u { text-decoration: none; color: #00FFFF; }
+span.comment, span.comment span.string { color: #26a135; }
+span.indent { white-space: pre; }
+span.operator { color: #666666; }
+span.string { color: #ba2121; }
+span.tt { line-height: 0; }
+span#docLabelShort { display: none; }
+strong, th { font-weight: 600; }
+table { border-collapse: collapse; }
+td, th { border: 1px solid #d5d5d5; padding: 1mm; padding-left: 3mm; padding-right: 4mm; vertical-align: top; }
+th { text-align: left; }
+ul { padding-left: 5mm; }
+@media only screen and (max-width: 900px) and (min-width: 750px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 18px; }
+  img.screenshot { height: 233.75px; width: 368.9px; /* 85% */ }
+}
+@media only screen and (max-width: 750px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 18px; }
+  div#root { margin-left: 5mm; margin-right: 5mm; }
+  nav > div > div { margin-left: 5mm; margin-right: 5mm; }
+  div.backlinks { left: 5mm; }
+  h1, h2 { margin-left: 0; }
+  img.screenshot { float: none; margin-left: 0; margin-top: 0; height: 206.25px; width: 325.5px; /* 75% */ }
+  span#docLabelShort { display: inline; }
+  span#docLabelLong { display: none; }
+}
+@media only screen and (max-width: 350px) {
+  img.screenshot { height: 103.125px; width: 162.75px; /* 37.5% */ }
+  nav { zoom: 0.80; }
+  div.indent { margin-left: 0; }
+  span#docLabelShort { display: inline; }
+  span#docLabelLong { display: none; }
+  nav > div > div > a:first-child { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+<nav>
+<div><div><a href="/" style="font-weight: 600;">TMBASIC</a><a href="doc.html"><span id="docLabelLong">Documentation</span><span id="docLabelShort">Docs</span></a><a href="https://github.com/tmbasic/tmbasic">GitHub</a></div></div>
+</nav>
+<div id="root">
+<div class="backlinks"><a href="doc.html">TMBASIC Documentation</a></div><h1>Cheat Sheet for Experienced Programmers</h1>TMBASIC is a statically- and nominally-typed BASIC language.
+Roughly speaking, it is a cross between QBASIC and Visual Basic (pre-.NET).<div class="paragraphBreak"></div><div><pre class="diagram">┌─ Supported features ─────────────────────────────────────────────────┐
+│  √ Statically typed (vs. dynamic)        √ if, for, for each, while  │
+│  √ Nominal type system (vs. structural)  √ print, input              │
+│  √ Exception-based error handling                                    │
+└──────────────────────────────────────────────────────────────────────┘<div class="paragraphBreak"></div>┌─ Unsupported QBASIC features ─┐   ┌─ Unsupported VB features ────────┐
+│  No line numbers              │   │  No object oriented programming  │
+│  No "goto"                    │   │  No multithreading               │
+│  No "peek" or "poke"          │   │  No graphics or sound support    │
+│  No type suffixes, like $     │   │  No interop with C/C++           │
+└───────────────────────────────┘   └──────────────────────────────────┘
+</pre></div><h2>Data types</h2><ul><li><a href="type_boolean.html">Boolean</a> — <span class="tt">true</span> / <span class="tt">false</span>.</li><li><a href="type_number.html">Number</a> — 128-bit decimal floating point.</li><li><a href="type_string.html">String</a> — UTF-8 text.</li><li><a href="type_date.html">Date</a> — Date without a time.</li><li><a href="type_datetime.html">DateTime</a> — Date and time, without a time zone.</li><li><a href="type_datetimeoffset.html">DateTimeOffset</a> — Date, time, and fixed time zone offset from UTC.</li><li><a href="type_timezone.html">TimeZone</a> — Offset from UTC and daylight saving time schedule.</li><li><a href="type_timespan.html">TimeSpan</a> — Period of time.</li><li><a href="type_list.html">List of T</a> — Generic dynamic-sized array with element type <span class="tt">T</span>. Example: <span class="tt">List of Number</span>. Literals look like: <span class="tt">[0, 1, 2]</span>.</li><li><a href="type_map.html">Map from K to V</a> — Generic dynamic-sized dictionary with key type <span class="tt">K</span> and value type <span class="tt">V</span>. Example: <span class="tt">Map from Number to String</span>.</li><li><a href="type_set.html">Set of T</a> — Generic dynamic-sized set containing unique elements of type <span class="tt">T</span>. Example: <span class="tt">Set of Number</span>.</li><li><a href="type_optional.html">Optional T</a> — Wrapper for type <span class="tt">T</span> indicating that the value may or may not be present. Example: <span class="tt">Optional Number</span>.</li><li><a href="type_record.html">Record (...)</a> — Anonymous record type, containing zero or more named fields. Example: <span class="tt">Record (foo as Number, bar as String)</span>. Literals look like <span class="tt">{foo: 1, bar: "hi"}</span>.</li><li>Named record types. These are defined using <span class="tt">type</span> ... <span class="tt">end type</span> blocks.</li></ul>There are no object or reference semantics in TMBASIC, and thus no real support for object oriented programming (OOP).
+Everything is a value.
+Assigning to a variable always makes a copy, even for records, lists, and maps.
+Procedure parameters are passed by value.
+Internally, TMBASIC uses immutable data structures to make this efficient.<h2>Sample code</h2><h3><span class="tt">if</span> statements</h3><div class="code"><div>sub FizzBuzz(n as Number)</div><div><span class="indent">    </span>dim fizz = (n mod 3) = 0</div><div><span class="indent">    </span>dim buzz = (n mod 5) = 0</div><div><span class="indent">    </span>if fizz and buzz then</div><div><span class="indent">    </span><span class="indent">    </span>print <span class="string">"FizzBuzz"</span></div><div><span class="indent">    </span>else if fizz then</div><div><span class="indent">    </span><span class="indent">    </span>print <span class="string">"Fizz"</span></div><div><span class="indent">    </span>else if buzz then</div><div><span class="indent">    </span><span class="indent">    </span>print <span class="string">"Buzz"</span></div><div><span class="indent">    </span>else</div><div><span class="indent">    </span><span class="indent">    </span>print n</div><div><span class="indent">    </span>end if</div><div>end function</div><pre></pre><div>sub Main()</div><div><span class="indent">    </span>dim n as Number</div><div><span class="indent">    </span>print <span class="string">"Enter a number, or 0 to quit: "</span>;</div><div><span class="indent">    </span>input n</div><div><span class="indent">    </span>if n &lt;&gt; 0 then FizzBuzz n</div><div>end sub</div></div><h3>Build a list efficiently with <span class="tt">dim list</span></h3><div class="code"><div>function Fibonacci(count as Number) as List of Number</div><div><span class="indent">    </span><span class="comment">' No explicit type needed when providing an initial value.</span></div><div><span class="indent">    </span>dim a = 0</div><div><span class="indent">    </span>dim b = 1</div><pre></pre><div><span class="indent">    </span><span class="comment">' Use <span class="string">"dim list"</span> and <span class="string">"yield"</span> to build the list to be returned.</span></div><div><span class="indent">    </span>dim list numbers</div><div><span class="indent">    </span><span class="indent">    </span>yield a</div><div><span class="indent">    </span><span class="indent">    </span>yield b</div><div><span class="indent">    </span><span class="indent">    </span>for i = 3 to count</div><div><span class="indent">    </span><span class="indent">    </span><span class="indent">    </span>dim c = a + b</div><div><span class="indent">    </span><span class="indent">    </span><span class="indent">    </span>yield c</div><div><span class="indent">    </span><span class="indent">    </span><span class="indent">    </span>a = b</div><div><span class="indent">    </span><span class="indent">    </span><span class="indent">    </span>b = c</div><div><span class="indent">    </span><span class="indent">    </span>next</div><div><span class="indent">    </span>end dim</div><pre></pre><div><span class="indent">    </span>return numbers</div><div>end function</div><pre></pre><div>sub Main()</div><div><span class="indent">    </span>for each n in Fibonacci(50)</div><div><span class="indent">    </span><span class="indent">    </span>print n</div><div><span class="indent">    </span>next</div><div>end sub</div></div>
+</div>
+</body>
+</html>

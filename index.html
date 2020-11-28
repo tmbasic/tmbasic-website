@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TMBASIC Programming Language</title>
+
+<!-- favicon start -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!-- favicon end -->
+
+<meta name="apple-mobile-web-app-title" content="TMBASIC">
+<meta name="application-name" content="TMBASIC">
+<meta name="msapplication-TileColor" content="#da532c">
+<style>
+* { -webkit-text-size-adjust: none; text-size-adjust: none; }
+a, a > span.tt { color: #326ec8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+body { font-family: "Segoe UI", "Helvetica Neue", "Helvetica", Arial, sans-serif; font-size: 16px; color: #444444; margin: 1cm auto; margin-bottom: 5cm; padding-top: 1cm; max-width: 900px; line-height: 165%; overflow-y: scroll; }
+col { width: auto !important; }
+div.backlinks { font-size: 10pt; position: absolute; margin-top: -1cm; line-height: 100%; white-space: nowrap; }
+div.bar { font-size: 9pt; margin-top: 20px; }
+div.bar > span { background: #f8f8f8; padding: 5px 10px 5px 10px; font-weight: 500; }
+div.code div { text-indent: -2cm; padding-left: 2cm; }
+div.code { padding: 3mm; margin-bottom: 5mm; background: #f8f8f8; margin-top: 8px; white-space: pre; }
+div.indent { margin-left: 1cm; }
+div.paragraphBreak { height: 16px; }
+div#root { margin-left: 1cm; margin-right: 1cm; }
+div#compatibilityTable { line-height: 100%; }
+div#compatibilityTable > table > tbody > tr > td { vertical-align: middle; padding: 2mm; padding-right: 4mm; }
+h1 { font-size: 40px; color: #333333; }
+h1 > span.tt { letter-spacing: -2px; word-break: break-word; }
+h1#tmbasic { display: none; }
+h1, h2, h3, h4, h5 { font-weight: 400; letter-spacing: -0.38px; line-height: 100%; }
+h2 { font-size: 28px; color: #ba3925; margin-top: 50px; }
+h3 { color: #ba3925; font-size: 20px; }
+img.screenshot { margin-top: 2mm; height: 275px; width: 434px; float: right; margin-left: 1cm; margin-right: 1mm; background: #bbbbbb; image-rendering: -webkit-optimize-contrast; }
+nav { background: #353535; position: absolute; top: 0; left: 0; width: 100%; padding-top: 2mm; padding-bottom: 2mm; line-height: normal; font-size: 18px; }
+nav > div { max-width: 900px; margin: 0 auto; }
+nav > div > div { margin-left: 1cm; margin-right: 1cm; }
+nav > div > div > a { margin-left: 5mm; color: #afafaf; }
+nav > div > div > a:hover { color: #FFFFFF; border-radius: 0.5mm; text-decoration: none; }
+nav > div > div > a:first-child { margin-left: 0; padding-left: 0; color: #f7f7f7; }
+pre, code, div.code, span.tt { font-family: Consolas, monospace; letter-spacing: -0.5px; color: #19177c; }
+pre, div.code { line-height: 100%; overflow-x: auto; overflow-y: hidden; margin-top: 0; }
+pre.diagram { display: inline-block; color: #333333; line-height: 100%; overflow-x: auto; overflow-y: hidden; width: 100%; }
+pre.taste { background: #000080; color: white; padding: 5px 0px 5px 10px; line-height: 120%; }
+pre.taste i { font-style: normal; color: #FFFF00; }
+pre.taste b { font-weight: normal; color: #C0C0C0; }
+pre.taste strong { font-weight: normal; color: #FF8AE2; }
+pre.taste u { text-decoration: none; color: #00FFFF; }
+span.comment, span.comment span.string { color: #26a135; }
+span.indent { white-space: pre; }
+span.operator { color: #666666; }
+span.string { color: #ba2121; }
+span.tt { line-height: 0; }
+span#docLabelShort { display: none; }
+strong, th { font-weight: 600; }
+table { border-collapse: collapse; }
+td, th { border: 1px solid #d5d5d5; padding: 1mm; padding-left: 3mm; padding-right: 4mm; vertical-align: top; }
+th { text-align: left; }
+ul { padding-left: 5mm; }
+@media only screen and (max-width: 900px) and (min-width: 750px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 18px; }
+  img.screenshot { height: 233.75px; width: 368.9px; /* 85% */ }
+}
+@media only screen and (max-width: 750px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 18px; }
+  div#root { margin-left: 5mm; margin-right: 5mm; }
+  nav > div > div { margin-left: 5mm; margin-right: 5mm; }
+  div.backlinks { left: 5mm; }
+  h1, h2 { margin-left: 0; }
+  img.screenshot { float: none; margin-left: 0; margin-top: 0; height: 206.25px; width: 325.5px; /* 75% */ }
+  span#docLabelShort { display: inline; }
+  span#docLabelLong { display: none; }
+}
+@media only screen and (max-width: 350px) {
+  img.screenshot { height: 103.125px; width: 162.75px; /* 37.5% */ }
+  nav { zoom: 0.80; }
+  div.indent { margin-left: 0; }
+  span#docLabelShort { display: inline; }
+  span#docLabelLong { display: none; }
+  nav > div > div > a:first-child { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+<nav>
+<div><div><a href="/" style="font-weight: 600;">TMBASIC</a><a href="doc.html"><span id="docLabelLong">Documentation</span><span id="docLabelShort">Docs</span></a><a href="https://github.com/tmbasic/tmbasic">GitHub</a></div></div>
+</nav>
+<div id="root">
+<h1 id="tmbasic">TMBASIC</h1>
+<!-- See doc/maintainer-instructions.md for instructions on generating this screenshot. -->
+<p><a href="/screenshot.png"><img src="/screenshot.png" alt="Screenshot" class="screenshot" width="500"></a></p>
+<p><strong>TMBASIC is a <a
+href="https://en.wikipedia.org/wiki/Programming_language">programming
+language</a> for writing <a
+href="https://en.wikipedia.org/wiki/Console_application">non-graphical
+programs</a></strong>. The modern BASIC language is easy for beginners
+to learn. Experienced programmers will find it familiar and productive
+after a brief glance at the <a
+href="/cheat.html">cheat sheet</a>.</p>
+<p><strong>TMBASIC is under development. Stay tuned!</strong></p>
+<ul>
+<li><a href="/doc.html">Documentation</a><br></li>
+<li><a href="/cheat.html">Cheat Sheet for Experienced
+Programmers</a></li>
+</ul>
+<h2 id="its-easy">It’s easy!</h2>
+<p><strong>Easy to learn</strong> — The BASIC language will feel
+familiar to anyone with programming experience. New programmers will
+enjoy a cohesive, batteries-included learning experience. Everything you
+need to develop and distribute sophisticated apps is included in
+TMBASIC.</p>
+<p><strong>Easy to write</strong> — Developing a high-quality modern GUI
+requires professional-level expertise. Text-based apps have few options
+for visual effects, and even a novice can produce quality results.</p>
+<p><strong>Easy to share</strong> — TMBASIC apps are standalone
+executables that require no external library files. They can be copied
+and opened without installation. TMBASIC can <a
+href="https://en.wikipedia.org/wiki/Cross_compiler">cross-compile</a>
+native executables targeting Windows, macOS, and Linux.</p>
+<h2 id="a-taste-of-tmbasic">A taste of TMBASIC</h2>
+<pre class="taste">
+<i>dim</i> a <i>as</i> <i>Number</i>
+<i>dim</i> b <i>as</i> <i>String</i>
+<i>dim</i> c <i>as</i> <i>Boolean</i>
+<i>dim</i> d <b>=</b> <b>1.2345</b>
+<i>dim</i> e <b>=</b> <strong>"hello world!"</strong>
+<i>dim</i> f <b>=</b> <i>true</i>
+</pre>
+<p>Declare variables with <code>dim</code>, providing either an explicit
+type or an initial value. The simple types are:</p>
+<ul>
+<li><code>Number</code> — <a
+href="https://en.wikipedia.org/wiki/Decimal128_floating-point_format">128-bit
+decimal floating-point</a></li>
+<li><code>String</code> — <a
+href="https://en.wikipedia.org/wiki/UTF-8">UTF-8 text</a></li>
+<li><code>Boolean</code> — <code>true</code> or <code>false</code></li>
+</ul>
+<br>
+<pre class="taste">
+<i>dim</i> myList <b>= [1, 2, 3]</b>
+<i>dim</i> combinedList <b>=</b> myList <b>+ [4, 5, 6] + 7</b><br>
+<i>dim</i> myMap <i>as Map from Number to String</i>
+myMap<b>(123) =</b> <strong>"hello"</strong>
+<i>print</i> ContainsKey<b>(</b>myMap<b>, 123)</b>  <u>' true</u><br>
+<i>dim set</i> mySet
+&nbsp;&nbsp;&nbsp;&nbsp;<i>for</i> i <b>= 1</b> <i>to</i> <b>100</b> <i>step</i> <b>2</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>yield</i> i
+&nbsp;&nbsp;&nbsp;&nbsp;<i>next</i>
+<i>end dim</i>
+</pre>
+<p>The collection types are:</p>
+<ul>
+<li><code>List of T</code> — An ordered array of values of type
+<code>T</code>. List indices start at zero.</li>
+<li><code>Map from T1 to T2</code> — A dictionary with keys of type
+<code>T1</code> and values of type <code>T2</code>.</li>
+<li><code>Set of T</code> — A group of unique values of type
+<code>T</code>.</li>
+</ul>
+<p>Use <code>dim list</code>, <code>dim map</code>, and
+<code>dim set</code> to build collections efficiently. Each
+<code>yield</code> statement adds an element to the collection.</p>
+<p>These collection types are <a
+href="https://en.wikipedia.org/wiki/Generic_programming">generic</a>,
+but you can’t define your own generic types.</p>
+<br>
+<pre class="taste">
+<i>dim</i> d <b>=</b> DateFromParts<b>(2021, 3, 12)</b>
+<i>dim</i> dt <b>=</b> DateTimeFromParts<b>(2021, 3, 12, 4, 30, 0, 0)</b>
+<i>dim</i> tz <b>=</b> TimeZoneFromName<b>(</b><strong>"America/New_York"</strong><b>)</b>
+<i>dim</i> offsets <b>=</b> UtcOffsets<b>(</b>dt<b>,</b> tz<b>)</b>
+<i>dim</i> dto <b>=</b> DateTimeOffsetFromParts<b>(2021, 3, 12, 4, 30, 0, 0,</b> offsets<b>(0))</b>
+</pre>
+<p>The date and time types are:</p>
+<ul>
+<li><code>Date</code> — A day without a time.</li>
+<li><code>DateTime</code> — A date and local time without any time
+zone.</li>
+<li><code>DateTimeOffset</code> — A date and local time with the time
+zone offset from UTC.</li>
+<li><code>TimeSpan</code> — A duration of time.</li>
+<li><code>TimeZone</code> — A time zone defined by the IANA.</li>
+</ul>
+<br>
+<pre class="taste">
+<i>type</i> ExampleRecord
+&nbsp;&nbsp;&nbsp;&nbsp;foo <i>as Number</i>
+&nbsp;&nbsp;&nbsp;&nbsp;bar <i>as String</i>
+<i>end type</i><br>
+<i>dim</i> myAnonymousRecord1 <i>as Record</i> <b>(</b>foo <i>as Number</i><b>,</b> bar <i>as String</i><b>)</b>
+<i>dim</i> myAnonymousRecord2 <b>= {</b> foo<b>: 100,</b> bar<b>:</b> <strong>"hello"</strong> <b>}</b>
+<i>dim</i> myNamedRecord <b>=</b> myAnonymousRecord2 <i>as</i> ExampleRecord
+</pre>
+<p>Both anonymous and named record types are supported. The literal
+syntax for anonymous records resembles JavaScript. Anonymous records can
+be converted to named records with the <code>as</code> operator.</p>
+<br>
+<pre class="taste">
+<i>dim</i> a <b>= {</b> foo<b>: 1,</b> bar<b>: 2 }</b>
+<i>dim</i> b <b>=</b> a    <u>' makes a copy</u>
+b<b>.</b>foo <b>= 999</b>  <u>' a.foo is still 1</u>
+</pre>
+<p>All types, including records and collections, have <a
+href="https://en.wikipedia.org/wiki/Value_semantics">value
+semantics</a>. There are no <a
+href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">references
+or pointers</a>. Assigning to a variable or passing to a function always
+makes a copy of the value.</p>
+<br>
+<pre class="taste">
+<i>sub</i> Main<b>()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>print</i> Squared<b>(5)</b>
+<i>end sub</i><br>
+<i>function</i> Squared<b>(</b>x <i>as Number</i><b>)</b> <i>as Number</i>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>return</i> x <i>*</i> x
+<i>end function</i>
+</pre>
+<p>Programs are broken down into functions and subroutines. A function
+returns a value to its caller. A subroutine does not return anything.
+Program execution begins in the <code>Main</code> subroutine.</p>
+<h2 id="compatibility">Compatibility</h2>
+<div id="compatibilityTable">
+<table>
+<tr>
+<td>
+<strong>Windows</strong><br><small><nobr>Vista or newer</nobr></small>
+</td>
+<td>
+<nobr>64-bit</nobr> • <nobr>32-bit</nobr>
+</td>
+</tr>
+<tr>
+<td>
+<strong>macOS</strong><br><small><nobr>10.13 or newer</nobr></small>
+</td>
+<td>
+Intel • Apple Silicon
+</td>
+</tr>
+<tr>
+<td>
+<strong>Linux</strong><br><small><nobr>2.6.39 or newer</nobr></small>
+</td>
+<td>
+<nobr>64-bit</nobr> • <nobr>32-bit</nobr> • ARM64 • ARM32
+</td>
+</tr>
+<tr>
+<td>
+<strong>iOS</strong>
+</td>
+<td>
+<a href="https://apps.apple.com/us/app/ish-shell/id1436902243">iSH
+Shell</a> (Linux <nobr>32-bit</nobr>)
+</td>
+</tr>
+<tr>
+<td>
+<strong>Android</strong>
+</td>
+<td>
+<a href="https://termux.com/">Termux</a> (Linux ARM64)
+</td>
+</tr>
+</table>
+</div>
+<h2 id="license">License</h2>
+<p>TMBASIC is <a
+href="https://en.wikipedia.org/wiki/Open-source_software">open source
+software</a> that is available free of charge. TMBASIC builds your
+programs using many open source components. <a
+href="https://github.com/tmbasic/tmbasic/blob/master/THIRD-PARTY-NOTICES.md">See
+a list of components here</a>. These components have permissive and
+commercial-friendly licenses that you must obey when you publish your
+programs written in TMBASIC. When you build your program, TMBASIC
+produces a <code>LICENSE.txt</code> file for your convenience. Include
+this license file when sharing your TMBASIC apps.</p>
+
+</div>
+</body>
+</html>
